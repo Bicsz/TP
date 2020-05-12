@@ -20,8 +20,8 @@ class OneLayerNet:
         weights_deltas = [[0] * (len(vector.get_x()) + 1)] * len(self.__neurons)   #вычисляем вес для дельты
 
         for j in range(len(self.__neurons)): #перебираем нейроны
-            sigma = (vector.get_d()[j] - self.__neurons[j].get_y()) \#считаем для каждого нейрона сигму
-                    * self.__neurons[j].derivative()
+            sigma = (vector.get_d()[j] - self.__neurons[j].get_y()) \
+                    * self.__neurons[j].derivative() #считаем для каждого нейрона сигму
             weights_deltas[j][0] = learning_rate * sigma #нулевой строке массива дельта весов присваиваем значение 
             wlen = len(self.__neurons[j].get_weights())#количество весов у контретного нейрона
             for i in range(wlen): #проходим по всем весам каждой строки
